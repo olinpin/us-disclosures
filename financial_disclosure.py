@@ -93,7 +93,7 @@ class Disclosures:
         for v in values:
             message = f"New disclosure from {[name for id, name in members if id == v[0]][0]} for the year {v[1]}. {v[2]} {v[3]}"
             tasks.append(asyncio.create_task(self.send_message(message, v)))
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(0.2)
 
         results = await asyncio.gather(*tasks)
         sent = [r for r in results if r]
