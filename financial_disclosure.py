@@ -5,6 +5,7 @@ from telegram_bot import Telegram
 from db import DB
 from dotenv import load_dotenv
 import asyncio
+import datetime
 
 load_dotenv()
 
@@ -102,9 +103,8 @@ class Disclosures:
 
         self.insertDisclosures(sent)
 
-        # print a message with the number of disclosures sent and the number of disclosures inserted and total disclosures
         print(
-            f"Sent {len(sent)} disclosures. Inserted {len(sent)} disclosures. Total disclosures: {len(values)}"
+            f"{datetime.datetime.now()} - Sent {len(sent)} disclosures. Inserted {len(sent)} disclosures. Total disclosures {len(values)}"
         )
 
 
