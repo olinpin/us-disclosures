@@ -10,9 +10,9 @@ load_dotenv()
 
 
 class Disclosures:
-    def __init__(self, telegram_api_key, telegram_channel, db_name, schema_path):
+    def __init__(self, telegram_api_key, telegram_channel, db_name, schema_path, seed_path):
         self.telegram = Telegram(telegram_api_key, telegram_channel)
-        self.db = DB(db_name, schema_path)
+        self.db = DB(db_name, schema_path, seed_path)
 
     async def send_message(self, message, return_value=True):
         try:
@@ -106,5 +106,6 @@ d = Disclosures(
     os.getenv("TELEGRAM_CHANNEL_ID"),
     os.getenv("DB_PATH"),
     os.getenv("SCHEMA_PATH"),
+    os.getenv("SEED_PATH"),
 )
 asyncio.run(d.run())
