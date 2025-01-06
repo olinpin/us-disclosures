@@ -8,4 +8,4 @@ class Telegram:
     
 
     async def send_message(self, message: str):
-        print(await self.bot.send_message(chat_id=self.channel_id, text=message))
+        await self.bot.send_message(chat_id=self.channel_id, text=message)
