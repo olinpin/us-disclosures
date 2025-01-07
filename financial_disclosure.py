@@ -22,6 +22,7 @@ class Disclosures:
             await self.telegram.send_message(message)
             return return_value
         except Exception as e:
+            self.log(f"Error sending message: {e}, message: {message}, return_value: {return_value}")
             return False
 
     def getDocuments(self, name="pelosi"):
@@ -103,9 +104,12 @@ class Disclosures:
 
         self.insertDisclosures(sent)
 
-        print(
-            f"{datetime.datetime.now()} - Sent {len(sent)} disclosures. Inserted {len(sent)} disclosures. Total disclosures {len(values)}"
+        self.log(
+            f"Sent {len(sent)} disclosures. Inserted {len(sent)} disclosures. Total disclosures {len(values)}"
         )
+
+    def log(self, message):
+        print(f"{datetime.datetime.now()} - {message}")
 
 
 d = Disclosures(
@@ -115,4 +119,7 @@ d = Disclosures(
     os.getenv("SCHEMA_PATH"),
     os.getenv("SEED_PATH"),
 )
-asyncio.run(d.run())
+try:
+    asyncio.run(d.run())
+except Exception as e:
+    d.log(f"Error while running: {e}")
