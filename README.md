@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```bash
 python financial_disclosure.py
 ```
-9. Receive telegram messages with disclosures (for best results I recommend running this every 5 minutes with crontab)
+9. Receive telegram messages with disclosures (for best results I recommend running this every 30 minutes with crontab)
 
 ### .env variables
 - `TELEGRAM_API_KEY` - can be obtained through the official [telegram docs](https://github.com/olinpin/us-disclosures)
