@@ -29,7 +29,7 @@ pip install -r requirements.txt
 7. Edit the `seed.sql` file with names you'd like to track (as seen in the example in the file)
 8. Run the script 
 ```bash
-python financial_disclosure.py
+python disclosures/financial_disclosure.py
 ```
 9. Receive telegram messages with disclosures (for best results I recommend running this every 30 minutes with crontab)
 
