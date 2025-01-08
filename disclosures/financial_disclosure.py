@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import os
-from telegram_bot import Telegram
-from db import DB
+from util.telegram_bot import Telegram
+from util.db import DB
 from dotenv import load_dotenv
 import asyncio
 import datetime
