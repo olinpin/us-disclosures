@@ -12,14 +12,17 @@ load_dotenv()
 
 class Disclosures:
     def __init__(
-        self, telegram_api_key, telegram_channel, db_name, schema_path, seed_path
+        self, telegram_api_key, telegram_channels, db_name, schema_path, seed_path
     ):
-        self.telegram = Telegram(telegram_api_key, telegram_channel)
+        self.telegrams = []
+        for telegram_channel in telegram_channels.split(","):
+            self.telegrams.append(Telegram(telegram_api_key, telegram_channel))
         self.db = DB(db_name, schema_path, seed_path)
 
     async def send_message(self, message, return_value=True):
         try:
-            await self.telegram.send_message(message)
+            for telegram in self.telegrams:
+                await telegram.send_message(message)
             return return_value
         except Exception as e:
             self.log(f"Error sending message: {e}, message: {message}, return_value: {return_value}")
