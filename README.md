@@ -35,7 +35,7 @@ python disclosures/financial_disclosure.py
 
 ### .env variables
 - `TELEGRAM_API_KEY` - can be obtained through the official [telegram docs](https://github.com/olinpin/us-disclosures)
-- `TELEGRAM_CHANNEL_ID` - that's the channel ID of your telegram bot that you created according to docs above
+- `TELEGRAM_CHANNEL_ID` - that's the channel ID of your telegram bot that you created according to docs above (can be a CSV)
 - `DB_PATH` - can stay the same
 - `SCHEMA_PATH` - can stay the same
 - `SEED_PATH` - can stay the same
