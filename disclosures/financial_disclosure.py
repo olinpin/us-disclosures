@@ -96,7 +96,6 @@ class Disclosures:
             documents[id] = self.getDocuments(name)
         values = self.prepareValues(documents)
         tasks = []
-        sent = []
         for v in values:
             message = f"New disclosure from {[name for id, name in members if id == v[0]][0]} for the year {v[1]}. {v[2]} {v[3]}"
             tasks.append(asyncio.create_task(self.send_message(message, v)))
@@ -105,10 +104,10 @@ class Disclosures:
         results = await asyncio.gather(*tasks)
         sent = [r for r in results if r]
 
-        self.insertDisclosures(sent)
+        self.insertDisclosures(values)
 
         self.log(
-            f"Sent {len(sent)} disclosures. Inserted {len(sent)} disclosures. Total disclosures {len(values)}"
+            f"Sent {len(sent)} disclosures. Inserted {len(values)} disclosures. Total disclosures {len(values)}"
         )
 
     def log(self, message):
